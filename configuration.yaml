@@ -1,0 +1,77 @@
+
+# Configure a default setup of Home Assistant (frontend, api, etc)
+default_config:
+
+# Text to speech
+tts:
+  - platform: google_translate
+
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
+
+frontend:
+  themes: !include_dir_merge_named themes
+
+media_extractor:
+
+recorder:
+
+camera:
+  - platform: generic
+    name: meteogram
+    still_image_url: https://www.yr.no/place/Germany/Berlin/Berlin/meteogram.svg
+    content_type: 'image/svg+xml'
+
+sensor:
+  - platform: aftership
+    api_key: !secret aftership_api_key
+  - platform: climacell
+    api_key: !secret climacell_api_key
+    name: climacell
+    monitored_conditions:
+      realtime:
+        - weather_condition
+        - temperature
+        - feels_like
+        - humidity
+        - visibility
+        - cloud_cover
+        - precipitation
+        - precipitation_type
+        - pressure
+        - wind_speed
+        - wind_direction
+        - wind_gust
+        - moon_phase
+        - sunset
+        - sunrise
+        - pollen_tree
+        - pollen_weed
+        - pollen_grass
+        - co
+        - epa_aqi
+        - epa_health_concern
+        - no2
+        - o3
+        - pm10
+        - pm25
+        - so2
+      forecast:
+        - weather_condition
+        - temperature
+        - precipitation
+        - precipitation_probability
+    scan_interval:
+      # At least one of these must be specified:
+      days: 0
+      hours: 0
+      minutes: 30
+      seconds: 0
+      milliseconds: 0
+
+google:
+  client_id: !secret google_client_id
+  client_secret: !secret google_client_secret
+

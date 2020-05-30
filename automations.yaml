@@ -1,0 +1,31 @@
+- id: '1590852572769'
+  alias: Balcony lights on sunset
+  description: ''
+  trigger:
+  - event: sunset
+    platform: sun
+  condition: []
+  action:
+  - device_id: 7069061b257e420a946db3cebd51895c
+    domain: switch
+    entity_id: switch.40505046c44f33b6dba4_1
+    type: turn_on
+  - device_id: a06541d1b33d4564ba48d10fc7a1190f
+    domain: light
+    entity_id: light.hue_color_lamp_2
+    type: turn_on
+- id: '1590853235952'
+  alias: A dormir
+  description: ''
+  trigger:
+  - device_id: 2598719517a24dec8c6f2c740a09e04a
+    domain: hue
+    platform: device
+    subtype: turn_off
+    type: remote_button_long_release
+  condition: []
+  action:
+  - device_id: 7069061b257e420a946db3cebd51895c
+    domain: switch
+    entity_id: switch.40505046c44f33b6dba4_1
+    type: turn_off
