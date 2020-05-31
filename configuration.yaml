@@ -67,7 +67,7 @@ sensor:
       # At least one of these must be specified:
       days: 0
       hours: 0
-      minutes: 30
+      minutes: 31
       seconds: 0
       milliseconds: 0
 
