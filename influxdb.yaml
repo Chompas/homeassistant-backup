@@ -1,0 +1,25 @@
+host: 10.0.0.18
+port: 8086
+database: homeassistant
+username: homeassistant
+password: !secret influxdb_pass
+max_retries: 3
+default_measurement: state
+include:
+  entities:
+    - sensor.aqara_balcon_humidity
+    - sensor.aqara_balcon_pressure
+    - sensor.aqara_balcon_temperature
+    - sensor.aqara_bedroom_humidity
+    - sensor.aqara_bedroom_pressure
+    - sensor.aqara_bedroom_temperature
+    - sensor.aqara_living_humidity
+    - sensor.aqara_living_pressure
+    - sensor.aqara_living_temperature
+    - light.hue_color_lamp_1
+    - light.hue_color_lamp_2
+    - light.hue_color_spot_1
+    - light.hue_color_spot_2
+    - light.hue_color_spot_3
+    - switch.40505046c44f33b6dba4_1
+    - switch.40505046c44f33b6dba4_2

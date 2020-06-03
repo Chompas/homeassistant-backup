@@ -10,13 +10,9 @@
     domain: switch
     entity_id: switch.40505046c44f33b6dba4_1
     type: turn_on
-  - device_id: a06541d1b33d4564ba48d10fc7a1190f
-    domain: light
-    entity_id: light.hue_color_lamp_2
-    type: turn_on
 - id: '1590853235952'
   alias: A dormir
-  description: ''
+  description: Apagar la luz del balcon, tele, receiver y deco
   trigger:
   - device_id: 2598719517a24dec8c6f2c740a09e04a
     domain: hue
@@ -29,3 +25,33 @@
     domain: switch
     entity_id: switch.40505046c44f33b6dba4_1
     type: turn_off
+  - data:
+      command: PowerOff
+      device: 69420543
+    entity_id: remote.harmony_hub
+    service: remote.send_command
+  - data:
+      command: PowerOff
+      device: 69420668
+    entity_id: remote.harmony_hub
+    service: remote.send_command
+  - data:
+      command: PowerOff
+      device: 69420586
+    entity_id: remote.harmony_hub
+    service: remote.send_command
+- id: '1591168409931'
+  alias: Update OpenUV every 30 minutes during the daytime
+  description: ''
+  trigger:
+  - minutes: '30'
+    platform: time_pattern
+  condition:
+  - condition: and
+    conditions:
+    - after: sunrise
+      before: sunset
+      condition: sun
+  action:
+  - data: {}
+    service: openuv.update_data

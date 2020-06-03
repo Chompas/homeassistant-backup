@@ -16,14 +16,10 @@ frontend:
 
 media_extractor:
 
-influxdb:
-  host: a0d7b954-influxdb
-  port: 8086
-  database: homeassistant
-  username: homeassistant
-  password: !secret influxdb_pass
-  max_retries: 3
-  default_measurement: state
+influxdb: !include influxdb.yaml
+
+openuv:
+  api_key: !secret openuv_api_key
 
 recorder:
 
@@ -34,6 +30,20 @@ camera:
     content_type: 'image/svg+xml'
 
 sensor:
+  - platform: systemmonitor
+    resources:
+      - type: disk_use_percent
+        arg: /
+      - type: disk_use
+        arg: /
+      - type: disk_free
+        arg: /
+      - type: disk_use_percent
+        arg: /mnt/timecapsule2
+      - type: memory_use_percent
+      - type: memory_free
+      - type: load_15m
+      - type: last_boot
   - platform: aftership
     api_key: !secret aftership_api_key
   - platform: climacell
