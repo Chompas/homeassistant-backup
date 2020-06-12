@@ -4,7 +4,14 @@
   trigger:
   - event: sunset
     platform: sun
-  condition: []
+  condition:
+  - above: 15
+    below: 50
+    condition: device
+    device_id: e9a9d49ad37440dfa36b67a61e3766df
+    domain: sensor
+    entity_id: sensor.aqara_balcon_temperature
+    type: is_temperature
   action:
   - device_id: 7069061b257e420a946db3cebd51895c
     domain: switch
@@ -17,7 +24,7 @@
   - device_id: 2598719517a24dec8c6f2c740a09e04a
     domain: hue
     platform: device
-    subtype: turn_off
+    subtype: dim_down
     type: remote_button_long_release
   condition: []
   action:
