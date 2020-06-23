@@ -36,7 +36,13 @@ light:
     name: Pasillo Lights
     entities:
       - light.hue_white_lamp_1
+      - light.hue_white_lamp_1_2
+      - light.hue_white_lamp_2_2
+  - platform: group
+    name: Bedroom Lights
+    entities:
       - light.hue_white_lamp_2
+      - light.hue_white_lamp_3
 
 media_extractor:
 
