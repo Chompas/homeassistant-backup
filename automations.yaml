@@ -17,36 +17,6 @@
     domain: switch
     entity_id: switch.40505046c44f33b6dba4_1
     type: turn_on
-- id: '1590853235952'
-  alias: A dormir
-  description: Apagar la luz del balcon, tele, receiver y deco
-  trigger:
-  - device_id: 2598719517a24dec8c6f2c740a09e04a
-    domain: hue
-    platform: device
-    subtype: dim_down
-    type: remote_button_long_release
-  condition: []
-  action:
-  - device_id: 7069061b257e420a946db3cebd51895c
-    domain: switch
-    entity_id: switch.40505046c44f33b6dba4_1
-    type: turn_off
-  - data:
-      command: PowerOff
-      device: 69420543
-    entity_id: remote.harmony_hub
-    service: remote.send_command
-  - data:
-      command: PowerOff
-      device: 69420668
-    entity_id: remote.harmony_hub
-    service: remote.send_command
-  - data:
-      command: PowerOff
-      device: 69420586
-    entity_id: remote.harmony_hub
-    service: remote.send_command
 - id: '1591168409931'
   alias: Update OpenUV every 30 minutes during the daytime
   description: ''
@@ -62,3 +32,94 @@
   action:
   - data: {}
     service: openuv.update_data
+- id: '1594716169267'
+  alias: A mimir
+  description: ''
+  trigger:
+  - at: '3:00'
+    platform: time
+  - event_data:
+      actionName: A mimir
+    event_type: ios.action_fired
+    platform: event
+  condition: []
+  action:
+  - device_id: 7069061b257e420a946db3cebd51895c
+    domain: switch
+    entity_id: switch.40505046c44f33b6dba4_1
+    type: turn_off
+  - device_id: 0519935bf71a41678d7f62cd0f227f1d
+    domain: light
+    entity_id: light.hue_color_lamp_1
+    type: turn_off
+  - device_id: 54c503c4845049a4958139943bb6e77d
+    domain: light
+    entity_id: light.hue_color_lamp_2
+    type: turn_off
+  - device_id: 2abed01ee58b4dc898f233d307aef189
+    domain: light
+    entity_id: light.hue_color_spot_1
+    type: turn_off
+  - device_id: bfeac68df97e47ed9ce9de3a86a2aa85
+    domain: light
+    entity_id: light.hue_color_spot_2
+    type: turn_off
+  - device_id: 89b0dbe23609438a9e5b15e2349b24f1
+    domain: light
+    entity_id: light.hue_color_spot_3
+    type: turn_off
+  - device_id: 3eff09444c9c4ff4babdce036fe61864
+    domain: light
+    entity_id: light.pasillo_1
+    type: turn_off
+  - device_id: 2642ee2d1d5e4d1ab01ae677ae0cdfb3
+    domain: light
+    entity_id: light.pasillo_2
+    type: turn_off
+  - device_id: 8d6461ad5cb3493bb74669c37e86f5c8
+    domain: light
+    entity_id: light.pasillo_3
+    type: turn_off
+  - device_id: dd8846c7ebf54d0bba153d1099ea0b33
+    domain: light
+    entity_id: light.habitacion_1
+    type: turn_off
+  - device_id: 1227fdb70a11458daee913fe38456586
+    domain: light
+    entity_id: light.habitacion_2
+    type: turn_off
+  mode: single
+- id: '1597600405202'
+  alias: Notify Cosas
+  description: ''
+  trigger:
+  - at: '19:00'
+    platform: time
+  - at: '5:40'
+    platform: time
+  condition: []
+  action:
+  - data_template:
+      message: "\U0001F3E0 *Casuli Report*\n\n\U0001F6CB️️  {{ states.sensor.aqara_living_temperature.state\
+        \ }} °C | \U0001F6CF️ {{ states.sensor.aqara_bedroom_temperature.state }}\
+        \ °C |  \U0001F332 {{ states.sensor.aqara_balcon_temperature.state }} °C\n\
+        \U0001F32C️ Presión: {{ states.sensor.aqara_balcon_pressure.state }} hPa\n\
+        \U0001F4A6 Humedad: {{ states.sensor.aqara_balcon_humidity.state }}%\n⬇️ Min:\
+        \ {{ states.sensor.cc_climacell_temperature_min_0d.state }} °C / ⬆️ Max: {{\
+        \ states.sensor.cc_climacell_temperature_max_0d.state }} °C\n☔Probabilidad\
+        \ de lluvia: {{ states. sensor.cc_climacell_precipitation_probability_0d.state\
+        \ }}% ({{ states.sensor.cc_climacell_precipitation_accumulation_0d.state }}mm)\n\
+        \n **Mañana:**\n\n ⬇️ Min: {{ states.sensor.cc_climacell_temperature_min_1d.state\
+        \ }} °C / ⬆️ Max: {{ states.sensor.cc_climacell_temperature_max_1d.state }}\
+        \ °C\n☔ Probabilidad de lluvia: {{ states. sensor.cc_climacell_precipitation_probability_1d.state\
+        \ }}% ({{ states.sensor.cc_climacell_precipitation_accumulation_1d.state }}mm)"
+    service: notify.telegram_bot
+  - data:
+      data:
+        photo:
+        - caption: Meteogram
+          url: https://www.yr.no/place/Germany/Berlin/Berlin/meteogram.png
+      message: Meteograma
+      title: Meteogram
+    service: notify.telegram_bot
+  mode: single

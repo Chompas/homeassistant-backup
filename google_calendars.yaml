@@ -54,3 +54,17 @@
     ignore_availability: true
     name: Phases of the Moon
     track: true
+
+- cal_id: ecq46006e6li56iro4h2cgckpo@group.calendar.google.com
+  entities:
+  - device_id: turnos_vicky
+    ignore_availability: true
+    name: Turnos Vicky
+    track: true
+
+- cal_id: 8enj3ch5tfjm0afv4fauhsjra0@group.calendar.google.com
+  entities:
+  - device_id: suddeutschland
+    ignore_availability: true
+    name: "S\xFCddeutschland"
+    track: true

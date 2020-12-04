@@ -14,9 +14,37 @@ scene: !include scenes.yaml
 frontend:
   themes: !include_dir_merge_named themes
 
+spotify:
+  client_id: !secret spotify_client_id
+  client_secret: !secret spotify_client_secret
+
+spotcast:
+  sp_dc: !secret sp_dc
+  sp_key: !secret sp_key
+
+telegram_bot:
+  - platform: polling
+    api_key: !secret telegram_bot_token
+    allowed_chat_ids:
+      - 8653176
+      - 35636505
+
+notify:
+  - name: emiliano
+    platform: telegram
+    chat_id: 8653176
+  - name: vicky
+    platform: telegram
+    chat_id: 35636505
+  - name: telegram_bot
+    platform: group
+    services:
+      - service: emiliano
+      - service: vicky 
+
 hue:
   bridges:
-    - host: 10.0.0.20
+    - host: 10.0.0.5
       allow_unreachable: true
       allow_hue_groups: true
 
@@ -24,25 +52,30 @@ light:
   - platform: group
     name: Comedor Lights
     entities:
-      - light.hue_color_lamp_1
-      - light.hue_color_lamp_2
+      - light.comedor_color
+      - light.comedor_filament
   - platform: group
     name: Living Lights
     entities:
-      - light.hue_color_spot_1
-      - light.hue_color_spot_2
-      - light.hue_color_spot_3
+      - light.spot_1
+      - light.spot_2
+      - light.spot_3
+      - light.kallax
   - platform: group
     name: Pasillo Lights
     entities:
-      - light.hue_white_lamp_1
-      - light.hue_white_lamp_1_2
-      - light.hue_white_lamp_2_2
+      - light.pasillo_1
+      - light.pasillo_2
   - platform: group
     name: Bedroom Lights
     entities:
-      - light.hue_white_lamp_2
-      - light.hue_white_lamp_3
+      - light.habitacion_1
+      - light.habitacion_2
+  - platform: group
+    name: Ofi Lights
+    entities:
+      - light.ofi_1
+      - light.ofi_2
 
 media_extractor:
 
@@ -52,6 +85,9 @@ openuv:
   api_key: !secret openuv_api_key
 
 recorder:
+
+media_player:
+  - platform: onkyo
 
 camera:
   - platform: generic
