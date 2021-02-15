@@ -48,38 +48,50 @@
     domain: switch
     entity_id: switch.40505046c44f33b6dba4_1
     type: turn_off
-  - device_id: 0519935bf71a41678d7f62cd0f227f1d
+  - type: turn_off
+    device_id: b7ebc09b42434538b6cb1299f7e0448f
+    entity_id: switch.40505046c44f33b6dba4_2
+    domain: switch
+  - type: turn_off
+    device_id: 54c503c4845049a4958139943bb6e77d
+    entity_id: light.kallax
     domain: light
-    entity_id: light.hue_color_lamp_1
-    type: turn_off
-  - device_id: 54c503c4845049a4958139943bb6e77d
+  - type: turn_off
+    device_id: 2abed01ee58b4dc898f233d307aef189
+    entity_id: light.spot_1
     domain: light
-    entity_id: light.hue_color_lamp_2
-    type: turn_off
-  - device_id: 2abed01ee58b4dc898f233d307aef189
+  - type: turn_off
+    device_id: bfeac68df97e47ed9ce9de3a86a2aa85
+    entity_id: light.spot_2
     domain: light
-    entity_id: light.hue_color_spot_1
-    type: turn_off
-  - device_id: bfeac68df97e47ed9ce9de3a86a2aa85
+  - type: turn_off
+    device_id: 89b0dbe23609438a9e5b15e2349b24f1
+    entity_id: light.spot_3
     domain: light
-    entity_id: light.hue_color_spot_2
-    type: turn_off
-  - device_id: 89b0dbe23609438a9e5b15e2349b24f1
+  - type: turn_off
+    device_id: 0519935bf71a41678d7f62cd0f227f1d
+    entity_id: light.comedor_color
     domain: light
-    entity_id: light.hue_color_spot_3
-    type: turn_off
+  - type: turn_off
+    device_id: 89fd70ed1205423a97d9fcfb469f55bc
+    entity_id: light.comedor_filament
+    domain: light
   - device_id: 3eff09444c9c4ff4babdce036fe61864
     domain: light
     entity_id: light.pasillo_1
     type: turn_off
-  - device_id: 2642ee2d1d5e4d1ab01ae677ae0cdfb3
-    domain: light
+  - type: turn_off
+    device_id: 8d6461ad5cb3493bb74669c37e86f5c8
     entity_id: light.pasillo_2
-    type: turn_off
-  - device_id: 8d6461ad5cb3493bb74669c37e86f5c8
     domain: light
-    entity_id: light.pasillo_3
-    type: turn_off
+  - type: turn_off
+    device_id: 7c0c72197a9339460f8bb66a5b8fd15c
+    entity_id: light.ofi_1
+    domain: light
+  - type: turn_off
+    device_id: 2642ee2d1d5e4d1ab01ae677ae0cdfb3
+    entity_id: light.ofi_2
+    domain: light
   - device_id: dd8846c7ebf54d0bba153d1099ea0b33
     domain: light
     entity_id: light.habitacion_1
@@ -105,21 +117,58 @@
         \ °C |  \U0001F332 {{ states.sensor.aqara_balcon_temperature.state }} °C\n\
         \U0001F32C️ Presión: {{ states.sensor.aqara_balcon_pressure.state }} hPa\n\
         \U0001F4A6 Humedad: {{ states.sensor.aqara_balcon_humidity.state }}%\n⬇️ Min:\
-        \ {{ states.sensor.cc_climacell_temperature_min_0d.state }} °C / ⬆️ Max: {{\
-        \ states.sensor.cc_climacell_temperature_max_0d.state }} °C\n☔Probabilidad\
-        \ de lluvia: {{ states. sensor.cc_climacell_precipitation_probability_0d.state\
-        \ }}% ({{ states.sensor.cc_climacell_precipitation_accumulation_0d.state }}mm)\n\
-        \n **Mañana:**\n\n ⬇️ Min: {{ states.sensor.cc_climacell_temperature_min_1d.state\
-        \ }} °C / ⬆️ Max: {{ states.sensor.cc_climacell_temperature_max_1d.state }}\
-        \ °C\n☔ Probabilidad de lluvia: {{ states. sensor.cc_climacell_precipitation_probability_1d.state\
-        \ }}% ({{ states.sensor.cc_climacell_precipitation_accumulation_1d.state }}mm)"
+        \ {{ states.sensor.cc_climacell_temperature_minimum_0d.state }} °C / ⬆️ Max: {{\
+        \ states.sensor.cc_climacell_temperature_maximum_0d.state }} °C\n☔Probabilidad\
+        \ de precip.: {{ states.sensor.cc_climacell_precipitation_type.state }} {{ states.sensor.cc_climacell_precipitation_probability_0d.state\
+        \ }}% ({{ states.sensor.cc_climacell_precipitation_maximum_0d.state }}mm-h)\n\
+        \n **Mañana:**\n\n ⬇️ Min: {{ states.sensor.cc_climacell_temperature_minimum_1d.state\
+        \ }} °C / ⬆️ Max: {{ states.sensor.cc_climacell_temperature_maximum_1d.state }}\
+        \ °C\n☔ Probabilidad de precip.: {{ states. sensor.cc_climacell_precipitation_probability_1d.state\
+        \ }}% ({{ states.sensor.cc_climacell_precipitation_maximum_1d.state }}mm-h)"
     service: notify.telegram_bot
   - data:
       data:
         photo:
-        - caption: Meteogram
+        - caption: Ohno
           url: https://www.yr.no/place/Germany/Berlin/Berlin/meteogram.png
       message: Meteograma
-      title: Meteogram
+      title: Ohno
     service: notify.telegram_bot
+  mode: single
+- id: '1608048778432'
+  alias: Apagar luces balcon a la madrugada
+  description: ''
+  trigger:
+  - platform: time
+    at: '3:00'
+  condition: []
+  action:
+  - domain: switch
+    entity_id: switch.40505046c44f33b6dba4_1
+    device_id: 7069061b257e420a946db3cebd51895c
+    type: turn_off
+  - domain: switch
+    entity_id: switch.40505046c44f33b6dba4_2
+    device_id: b7ebc09b42434538b6cb1299f7e0448f
+    type: turn_off
+  mode: single
+- id: '1608634886669'
+  alias: Christmas lights on sunset
+  description: ''
+  trigger:
+  - platform: sun
+    event: sunset
+  condition:
+  - type: is_temperature
+    condition: device
+    device_id: e9a9d49ad37440dfa36b67a61e3766df
+    entity_id: sensor.aqara_balcon_temperature
+    domain: sensor
+    above: 15
+    below: 50
+  action:
+  - type: turn_on
+    device_id: b7ebc09b42434538b6cb1299f7e0448f
+    entity_id: switch.40505046c44f33b6dba4_2
+    domain: switch
   mode: single

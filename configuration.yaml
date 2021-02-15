@@ -11,6 +11,10 @@ automation: !include automations.yaml
 script: !include scripts.yaml
 scene: !include scenes.yaml
 
+# http:
+#  ssl_certificate: /ssl/fullchain.pem
+#  ssl_key: /ssl/privkey.pem
+
 frontend:
   themes: !include_dir_merge_named themes
 
@@ -21,6 +25,10 @@ spotify:
 spotcast:
   sp_dc: !secret sp_dc
   sp_key: !secret sp_key
+
+fastdotcom:
+  scan_interval:
+      minutes: 120
 
 telegram_bot:
   - platform: polling
@@ -112,27 +120,27 @@ sensor:
       - type: last_boot
   - platform: aftership
     api_key: !secret aftership_api_key
-  - platform: climacell
+  - platform: climacell    
     api_key: !secret climacell_api_key
     name: climacell
-    monitored_conditions:
-      realtime:
-        conditions:
-          - weather_condition
+    units: metric
+    timelines:
+      - name: "" #Realtime
+        timestep: "1m"
+        forecast_observations: 1
+        fields:
           - temperature
-          - feels_like
+          - temperatureApparent
           - humidity
-          - visibility
-          - cloud_cover
-          - precipitation
-          - precipitation_type
+          - windSpeed
+          - windDirection
+          - windgust
           - pressure
-          - wind_speed
-          - wind_direction
-          - wind_gust
-          - moon_phase
-          - sunset
-          - sunrise
+          - precipicationIntensity
+          - precipitationType
+          - visibility
+          - cloudCover
+          - weather_condition
           - pollen_tree
           - pollen_weed
           - pollen_grass
@@ -152,52 +160,16 @@ sensor:
           minutes: 31
           seconds: 0
           milliseconds: 0
-      daily:
-        forecast_observations: 4
-        conditions:
+      - name: "" #daily
+        forecast_observations: 5
+        fields:
           - temperature
-          - feels_like
-#          - dewpoint
-          - humidity
-          - wind_speed
-          - wind_direction
-#          - wind_gust
-          - pressure
-          - precipitation
-#          - precipitation_type
+          - temperatureMin
+          - temperatureMax
+          - precipitationIntensityMin
+          - precipitationIntensityMax
           - precipitation_probability
-          - precipitation_accumulation
-          - sunset
-          - sunrise
-          - visibility
-#          - cloud_cover
-#          - cloud_base
-#          - cloud_ceiling
-#          - satellite_cloud
-#          - surface_shortwave_radiation
-#          - moon_phase
           - weather_condition
-#          - weather_groups
-#          - pm25
-#          - pm10
-#          - o3
-#          - no2
-#          - co
-#          - so2
-#          - epa_aqi
-#          - epa_primary_pollutant
-#          - epa_health_concern
-#          - china_aqi
-#          - china_primary_pollutant
-#          - china_health_concern
-#          - pollen_tree
-#          - pollen_weed
-#          - pollen_grass
-#          - road_risk_score
-#          - road_risk
-#          - road_risk_confidence
-#          - road_risk_conditions
-#          - fire_index
         scan_interval:
           # At least one of these must be specified:
           days: 0
@@ -212,63 +184,6 @@ sensor:
           2:
             - "00:00"
             - "06:30"
-      hourly:
-        forecast_observations: 1
-        conditions:
-          - temperature
-          - feels_like
-          - dewpoint
-          - humidity
-          - wind_speed
-          - wind_direction
-          - wind_gust
-          - pressure
-          - precipitation
-          - precipitation_type
-          - precipitation_probability
-#          - precipitation_accumulation
-          - sunset
-          - sunrise
-          - visibility
-          - cloud_cover
-          - cloud_base
-          - cloud_ceiling
-#          - satellite_cloud
-          - surface_shortwave_radiation
-          - moon_phase
-          - weather_condition
-#          - weather_groups
-          - pm25
-          - pm10
-          - o3
-          - no2
-          - co
-          - so2
-          - epa_aqi
-          - epa_primary_pollutant
-          - epa_health_concern
-#          - china_aqi
-#          - china_primary_pollutant
-#          - china_health_concern
-          - pollen_tree
-          - pollen_weed
-          - pollen_grass
-          - road_risk_score
-#          - road_risk
-          - road_risk_confidence
-          - road_risk_conditions
-#          - fire_index
-        scan_interval:
-          # At least one of these must be specified:
-          days: 0
-          hours: 1
-          minutes: 0
-          seconds: 0
-          milliseconds: 0
-        exclude_interval:
-          1:
-            - "01:00"
-            - "05:00"
 google:
   client_id: !secret google_client_id
   client_secret: !secret google_client_secret
