@@ -5,7 +5,7 @@
   - event: sunset
     platform: sun
   condition:
-  - above: 15
+  - above: 17
     below: 50
     condition: device
     device_id: e9a9d49ad37440dfa36b67a61e3766df
@@ -17,6 +17,7 @@
     domain: switch
     entity_id: switch.40505046c44f33b6dba4_1
     type: turn_on
+  mode: single
 - id: '1591168409931'
   alias: Update OpenUV every 30 minutes during the daytime
   description: ''
@@ -117,13 +118,13 @@
         \ °C |  \U0001F332 {{ states.sensor.aqara_balcon_temperature.state }} °C\n\
         \U0001F32C️ Presión: {{ states.sensor.aqara_balcon_pressure.state }} hPa\n\
         \U0001F4A6 Humedad: {{ states.sensor.aqara_balcon_humidity.state }}%\n⬇️ Min:\
-        \ {{ states.sensor.cc_climacell_temperature_minimum_0d.state }} °C / ⬆️ Max: {{\
-        \ states.sensor.cc_climacell_temperature_maximum_0d.state }} °C\n☔Probabilidad\
-        \ de precip.: {{ states.sensor.cc_climacell_precipitation_type.state }} {{ states.sensor.cc_climacell_precipitation_probability_0d.state\
-        \ }}% ({{ states.sensor.cc_climacell_precipitation_maximum_0d.state }}mm-h)\n\
-        \n **Mañana:**\n\n ⬇️ Min: {{ states.sensor.cc_climacell_temperature_minimum_1d.state\
-        \ }} °C / ⬆️ Max: {{ states.sensor.cc_climacell_temperature_maximum_1d.state }}\
-        \ °C\n☔ Probabilidad de precip.: {{ states. sensor.cc_climacell_precipitation_probability_1d.state\
+        \ {{ states.sensor.cc_climacell_temperature_minimum_0d.state }} °C / ⬆️ Max:\
+        \ {{ states.sensor.cc_climacell_temperature_maximum_0d.state }} °C\n☔Probabilidad\
+        \ de precip.: {{ states.sensor.cc_climacell_precipitation_type.state }} {{\
+        \ states.sensor.cc_climacell_precipitation_probability_0d.state }}% ({{ states.sensor.cc_climacell_precipitation_maximum_0d.state\
+        \ }}mm-h)\n\n **Mañana:**\n\n ⬇️ Min: {{ states.sensor.cc_climacell_temperature_minimum_1d.state\
+        \ }} °C / ⬆️ Max: {{ states.sensor.cc_climacell_temperature_maximum_1d.state\
+        \ }} °C\n☔ Probabilidad de precip.: {{ states. sensor.cc_climacell_precipitation_probability_1d.state\
         \ }}% ({{ states.sensor.cc_climacell_precipitation_maximum_1d.state }}mm-h)"
     service: notify.telegram_bot
   - data:
@@ -164,11 +165,21 @@
     device_id: e9a9d49ad37440dfa36b67a61e3766df
     entity_id: sensor.aqara_balcon_temperature
     domain: sensor
-    above: 15
+    above: 17
     below: 50
   action:
   - type: turn_on
     device_id: b7ebc09b42434538b6cb1299f7e0448f
     entity_id: switch.40505046c44f33b6dba4_2
     domain: switch
+  mode: single
+- id: '1616667109694'
+  alias: Restart HA every night
+  description: ''
+  trigger:
+  - platform: time
+    at: '2:00'
+  condition: []
+  action:
+  - service: homeassistant.restart
   mode: single

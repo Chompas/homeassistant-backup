@@ -26,6 +26,20 @@ spotcast:
   sp_dc: !secret sp_dc
   sp_key: !secret sp_key
 
+webostv:
+  host: 10.0.0.17
+  name: LG OLED Living
+  turn_on_action:
+    service: persistent_notification.create
+    data:
+      message: "Turn on action"
+  customize:
+    sources:
+      - Apple TV
+      - Home Theatre
+      - Live TV
+      - Sky
+
 fastdotcom:
   scan_interval:
       minutes: 120
