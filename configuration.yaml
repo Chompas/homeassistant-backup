@@ -110,6 +110,13 @@ recorder:
 
 media_player:
   - platform: onkyo
+    host: 10.0.0.21
+    name: onkyo
+    max_volume: 70
+    sources:
+      tv: "TV"
+      phono: "Vinilos"
+      network,net: "Network"
 
 camera:
   - platform: generic
