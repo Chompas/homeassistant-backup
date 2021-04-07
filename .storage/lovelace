@@ -1,0 +1,486 @@
+{
+    "version": 1,
+    "key": "lovelace",
+    "data": {
+        "config": {
+            "background": "var(--background-image)",
+            "title": "Casuli",
+            "views": [
+                {
+                    "title": "Home",
+                    "icon": "mdi:home",
+                    "badges": [],
+                    "cards": [
+                        {
+                            "type": "entities",
+                            "title": "Luces",
+                            "show_header_toggle": false,
+                            "entities": [
+                                {
+                                    "type": "section",
+                                    "label": "Casa"
+                                },
+                                {
+                                    "type": "custom:slider-entity-row",
+                                    "entity": "light.comedor_lights",
+                                    "toggle": true,
+                                    "name": "Comedor",
+                                    "icon": "mdi:table-chair"
+                                },
+                                {
+                                    "type": "custom:slider-entity-row",
+                                    "entity": "light.living_lights",
+                                    "toggle": true,
+                                    "name": "Living",
+                                    "icon": "mdi:sofa"
+                                },
+                                {
+                                    "type": "custom:slider-entity-row",
+                                    "entity": "light.bedroom_lights",
+                                    "toggle": true,
+                                    "name": "Bedroom",
+                                    "icon": "mdi:bed"
+                                },
+                                {
+                                    "type": "custom:slider-entity-row",
+                                    "entity": "light.ofi_lights",
+                                    "toggle": true,
+                                    "name": "Ofi",
+                                    "icon": "mdi:desk"
+                                },
+                                {
+                                    "type": "custom:slider-entity-row",
+                                    "entity": "light.pasillo_lights",
+                                    "toggle": true,
+                                    "name": "Pasillo",
+                                    "icon": "mdi:hanger"
+                                },
+                                {
+                                    "type": "section",
+                                    "label": "Balcon"
+                                },
+                                {
+                                    "entity": "switch.40505046c44f33b6dba4_1",
+                                    "name": "Techo"
+                                },
+                                {
+                                    "entity": "switch.40505046c44f33b6dba4_2",
+                                    "name": "Baranda"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                {
+                                    "type": "custom:mini-media-player",
+                                    "entity": "media_player.basurero",
+                                    "group": true,
+                                    "source": "icon",
+                                    "info": "short",
+                                    "hide": {
+                                        "volume": true
+                                    }
+                                },
+                                {
+                                    "type": "custom:mini-media-player",
+                                    "entity": "media_player.onkyo",
+                                    "name": "Onkyo",
+                                    "group": true,
+                                    "hide": {
+                                        "controls": true,
+                                        "power": true,
+                                        "info": true
+                                    }
+                                },
+                                {
+                                    "type": "custom:mini-media-player",
+                                    "entity": "media_player.oficina",
+                                    "group": true,
+                                    "max_volume": 60,
+                                    "hide": {
+                                        "controls": true,
+                                        "power": true,
+                                        "info": true
+                                    }
+                                },
+                                {
+                                    "type": "custom:mini-media-player",
+                                    "entity": "media_player.bathroom_speaker",
+                                    "name": "\u00d1oba",
+                                    "group": true,
+                                    "max_volume": 60,
+                                    "hide": {
+                                        "controls": true,
+                                        "power": true,
+                                        "info": true
+                                    },
+                                    "shortcuts": {
+                                        "buttons": [
+                                            {
+                                                "icon": "mdi:play",
+                                                "name": "Congo",
+                                                "type": "service",
+                                                "id": "media_extractor.play_media",
+                                                "data": {
+                                                    "entity_id": "media_player.basurero",
+                                                    "media_content_id": "http://cdn2.instream.audio:9243/stream",
+                                                    "media_content_type": "music",
+                                                    "extra": {
+                                                        "title": "Congo"
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "icon": "mdi:play",
+                                                "name": "Congo Ofi",
+                                                "type": "service",
+                                                "id": "media_extractor.play_media",
+                                                "data": {
+                                                    "entity_id": "media_player.oficina",
+                                                    "media_content_id": "http://cdn2.instream.audio:9243/stream",
+                                                    "media_content_type": "music",
+                                                    "extra": {
+                                                        "title": "Congo"
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "type": "custom:mini-graph-card",
+                            "entities": [
+                                "sensor.fast_com_download"
+                            ]
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                {
+                                    "type": "custom:mini-media-player",
+                                    "entity": "media_player.lg_oled_living",
+                                    "icon": "mdi:television",
+                                    "name": "Tele",
+                                    "source": "full",
+                                    "artwork": "material",
+                                    "hide": {
+                                        "volume": true
+                                    }
+                                },
+                                {
+                                    "type": "custom:mini-media-player",
+                                    "entity": "media_player.butters",
+                                    "name": "Apple TV",
+                                    "hide": {
+                                        "volume": true
+                                    }
+                                },
+                                {
+                                    "type": "custom:mini-media-player",
+                                    "entity": "media_player.onkyo",
+                                    "name": "Onkyo Receiver",
+                                    "info": "scroll"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "horizontal-stack",
+                            "cards": [
+                                {
+                                    "type": "custom:mini-graph-card",
+                                    "name": "Tempe",
+                                    "entities": [
+                                        "sensor.aqara_balcon_temperature"
+                                    ],
+                                    "line_color": "blue",
+                                    "line_width": 5,
+                                    "font_size": 60
+                                },
+                                {
+                                    "type": "custom:mini-graph-card",
+                                    "name": "Humedad",
+                                    "entities": [
+                                        "sensor.aqara_balcon_humidity"
+                                    ],
+                                    "line_color": "#e74c3c",
+                                    "line_width": 5,
+                                    "font_size": 60
+                                },
+                                {
+                                    "type": "custom:mini-graph-card",
+                                    "name": "Presi\u00f3n",
+                                    "entities": [
+                                        "sensor.aqara_balcon_pressure"
+                                    ],
+                                    "line_color": "var(--accent-color)",
+                                    "line_width": 5,
+                                    "font_size": 60
+                                }
+                            ]
+                        },
+                        {
+                            "type": "custom:ha-card-weather-conditions",
+                            "animation": false,
+                            "weather": {
+                                "icons_model": "climacell",
+                                "current": {
+                                    "sun": "sun.sun",
+                                    "current_conditions": "sensor.cc_climacell_weather_condition",
+                                    "humidity": "sensor.cc_climacell_humidity_percentage",
+                                    "pressure": "sensor.cc_climacell_barometric_pressure",
+                                    "temperature": "sensor.cc_climacell_temperature",
+                                    "visibility": "sensor.cc_climacell_visibility",
+                                    "wind_bearing": "sensor.cc_climacell_wind_direction",
+                                    "wind_speed": "sensor.cc_climacell_wind_speed",
+                                    "precipitation": "sensor.cc_climacell_precipitation",
+                                    "forecast": true
+                                },
+                                "forecast": {
+                                    "meteogram": "camera.meteogram",
+                                    "icons": {
+                                        "day_1": "sensor.cc_climacell_weather_condition_0d",
+                                        "day_2": "sensor.cc_climacell_weather_condition_1d",
+                                        "day_3": "sensor.cc_climacell_weather_condition_2d",
+                                        "day_4": "sensor.cc_climacell_weather_condition_3d",
+                                        "day_5": "sensor.cc_climacell_weather_condition_4d"
+                                    },
+                                    "temperature_high": {
+                                        "day_1": "sensor.cc_climacell_temperature_maximum_0d",
+                                        "day_2": "sensor.cc_climacell_temperature_maximum_1d",
+                                        "day_3": "sensor.cc_climacell_temperature_maximum_2d",
+                                        "day_4": "sensor.cc_climacell_temperature_maximum_3d",
+                                        "day_5": "sensor.cc_climacell_temperature_maximum_4d"
+                                    },
+                                    "temperature_low": {
+                                        "day_1": "sensor.cc_climacell_temperature_minimum_0d",
+                                        "day_2": "sensor.cc_climacell_temperature_minimum_1d",
+                                        "day_3": "sensor.cc_climacell_temperature_minimum_2d",
+                                        "day_4": "sensor.cc_climacell_temperature_minimum_3d",
+                                        "day_5": "sensor.cc_climacell_temperature_minimum_4d"
+                                    },
+                                    "precipitation_probability": {
+                                        "day_1": "sensor.cc_climacell_precipitation_probability_0d",
+                                        "day_2": "sensor.cc_climacell_precipitation_probability_1d",
+                                        "day_3": "sensor.cc_climacell_precipitation_probability_2d",
+                                        "day_4": "sensor.cc_climacell_precipitation_probability_3d",
+                                        "day_5": "sensor.cc_climacell_precipitation_probability_4d"
+                                    },
+                                    "precipitation_intensity": {
+                                        "day_1": "sensor.cc_climacell_precipitation_maximum_0d",
+                                        "day_2": "sensor.cc_climacell_precipitation_maximum_1d",
+                                        "day_3": "sensor.cc_climacell_precipitation_maximum_2d",
+                                        "day_4": "sensor.cc_climacell_precipitation_maximum_3d",
+                                        "day_5": "sensor.cc_climacell_precipitation_maximum_4d"
+                                    }
+                                }
+                            },
+                            "air_quality": {
+                                "pm25": "sensor.cc_climacell_pm25",
+                                "pm10": "sensor.cc_climacell_pm10",
+                                "o3": "sensor.cc_climacell_o3",
+                                "no2": "sensor.cc_climacell_no2",
+                                "co": "sensor.cc_climacell_co",
+                                "so2": "sensor.cc_climacell_so2",
+                                "epa_aqi": "sensor.cc_climacell_epa_aqi",
+                                "epa_health_concern": "sensor.cc_climacell_epa_health_concern"
+                            },
+                            "pollen": {
+                                "weed": {
+                                    "entity": "sensor.cc_climacell_pollen_weed",
+                                    "min": 0,
+                                    "max": 5,
+                                    "low": 1,
+                                    "high": 3
+                                },
+                                "grass": {
+                                    "entity": "sensor.cc_climacell_pollen_grass",
+                                    "min": 0,
+                                    "max": 5,
+                                    "low": 1,
+                                    "high": 3
+                                }
+                            }
+                        },
+                        {
+                            "type": "custom:mini-graph-card",
+                            "entities": [
+                                {
+                                    "entity": "sensor.aqara_balcon_temperature",
+                                    "name": "Balcon"
+                                },
+                                {
+                                    "entity": "sensor.aqara_living_temperature",
+                                    "name": "Living"
+                                },
+                                {
+                                    "entity": "sensor.aqara_bedroom_temperature",
+                                    "name": "Habitaci\u00f3n"
+                                }
+                            ],
+                            "hours_to_show": 48,
+                            "show": {
+                                "labels": true
+                            },
+                            "color_thresholds": [
+                                {
+                                    "value": 0,
+                                    "color": "#CCE5FF"
+                                },
+                                {
+                                    "value": 10,
+                                    "color": "#66B2FF"
+                                },
+                                {
+                                    "value": 18,
+                                    "color": "#0080FF"
+                                },
+                                {
+                                    "value": 20,
+                                    "color": "#87c087"
+                                },
+                                {
+                                    "value": 21,
+                                    "color": "#389638"
+                                },
+                                {
+                                    "value": 24,
+                                    "color": "#FF9932"
+                                },
+                                {
+                                    "value": 25,
+                                    "color": "#FF8000"
+                                },
+                                {
+                                    "value": 26,
+                                    "color": "#ff0000"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "custom:atomic-calendar-revive",
+                            "entities": [
+                                "calendar.emiliano_viscarra",
+                                "calendar.birthdays",
+                                "calendar.turnos_vicky"
+                            ],
+                            "name": "Calendario",
+                            "enableModeChange": true,
+                            "firstDayOfWeek": 1,
+                            "maxDaysToShow": 7,
+                            "showDate": false,
+                            "sortByStartTime": true,
+                            "showDeclined": true,
+                            "showRelativeTime": true,
+                            "showEventIcon": false,
+                            "calShowDescription": false,
+                            "showLastCalendarWeek": false,
+                            "hoursFormat": "H:mm",
+                            "dateFormat": "LL",
+                            "showCurrentEventLine": false,
+                            "showMonth": true,
+                            "showWeekDay": true,
+                            "showNoEventsForToday": true
+                        }
+                    ]
+                },
+                {
+                    "badges": [],
+                    "cards": [
+                        {
+                            "entities": [
+                                {
+                                    "entity": "sensor.memory_use_percent"
+                                },
+                                {
+                                    "entity": "sensor.memory_free"
+                                },
+                                {
+                                    "entity": "sensor.load_15m"
+                                },
+                                {
+                                    "entity": "sensor.last_boot"
+                                },
+                                {
+                                    "entity": "sensor.disk_free"
+                                },
+                                {
+                                    "entity": "sensor.disk_use"
+                                },
+                                {
+                                    "entity": "sensor.disk_use_percent"
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "title": "Usage",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "sensor.aqara_balcon_temperature"
+                                }
+                            ],
+                            "hours_to_show": 24,
+                            "refresh_interval": 0,
+                            "title": "Balcon",
+                            "type": "history-graph"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "sensor.aqara_bedroom_temperature"
+                                }
+                            ],
+                            "hours_to_show": 24,
+                            "refresh_interval": 0,
+                            "type": "history-graph"
+                        },
+                        {
+                            "entity": "sensor.mfc_l2710dw_black_toner_remaining",
+                            "max": 100,
+                            "min": 0,
+                            "type": "gauge"
+                        },
+                        {
+                            "entities": [
+                                "sensor.aqara_balcon_humidity",
+                                "sensor.aqara_balcon_linkquality",
+                                "sensor.aqara_balcon_pressure",
+                                "sensor.aqara_balcon_temperature",
+                                "sensor.aqara_bedroom_humidity",
+                                "sensor.aqara_bedroom_linkquality",
+                                "sensor.aqara_bedroom_pressure",
+                                "sensor.aqara_bedroom_temperature",
+                                "sensor.aqara_living_humidity",
+                                "sensor.aqara_living_linkquality",
+                                "sensor.aqara_living_pressure",
+                                "sensor.aqara_living_temperature"
+                            ],
+                            "type": "entities"
+                        }
+                    ],
+                    "icon": "mdi:gauge",
+                    "path": "system-monitoring",
+                    "title": "System Monitoring"
+                },
+                {
+                    "badges": [],
+                    "cards": [
+                        {
+                            "aspect_ratio": "50%",
+                            "type": "iframe",
+                            "url": "https://embed.windy.com/embed2.html?lat=52.522&lon=13.309&zoom=10&level=surface&overlay=rain&menu=&message=&marker=true&&calendar=&pressure=&type=map&location=coordinates&detail=&detailLat=52.134&detailLon=13.389&metricWind=default&metricTemp=default&radarRange=-1"
+                        }
+                    ],
+                    "icon": "mdi:cloud",
+                    "panel": true,
+                    "path": "clima",
+                    "title": "Clima"
+                }
+            ]
+        }
+    }
+}
