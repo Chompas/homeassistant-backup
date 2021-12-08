@@ -56,15 +56,19 @@
                                     "icon": "mdi:hanger"
                                 },
                                 {
+                                    "entity": "switch.smart_socket_socket_1",
+                                    "name": "Enchufe Ratona"
+                                },
+                                {
                                     "type": "section",
                                     "label": "Balcon"
                                 },
                                 {
-                                    "entity": "switch.40505046c44f33b6dba4_1",
+                                    "entity": "switch.smart_outdoor_plug_1",
                                     "name": "Techo"
                                 },
                                 {
-                                    "entity": "switch.40505046c44f33b6dba4_2",
+                                    "entity": "switch.smart_outdoor_plug_2",
                                     "name": "Baranda"
                                 }
                             ]
@@ -77,31 +81,41 @@
                                     "entity": "media_player.basurero",
                                     "group": true,
                                     "source": "icon",
+                                    "artwork": "full-cover",
                                     "info": "short",
                                     "hide": {
-                                        "volume": true
+                                        "volume": true,
+                                        "icon": true
                                     }
                                 },
                                 {
                                     "type": "custom:mini-media-player",
-                                    "entity": "media_player.onkyo",
+                                    "entity": "media_player.onkyto",
                                     "name": "Onkyo",
                                     "group": true,
+                                    "icon": "mdi:speaker",
+                                    "max_volume": 60,
+                                    "artwork": "none",
                                     "hide": {
                                         "controls": true,
                                         "power": true,
-                                        "info": true
+                                        "info": true,
+                                        "progress": true,
+                                        "source": true
                                     }
                                 },
                                 {
                                     "type": "custom:mini-media-player",
                                     "entity": "media_player.oficina",
                                     "group": true,
+                                    "icon": "mdi:google-home",
                                     "max_volume": 60,
+                                    "artwork": "none",
                                     "hide": {
                                         "controls": true,
                                         "power": true,
-                                        "info": true
+                                        "info": true,
+                                        "progress": true
                                     }
                                 },
                                 {
@@ -109,11 +123,14 @@
                                     "entity": "media_player.bathroom_speaker",
                                     "name": "\u00d1oba",
                                     "group": true,
+                                    "icon": "mdi:google-home",
                                     "max_volume": 60,
+                                    "artwork": "none",
                                     "hide": {
                                         "controls": true,
                                         "power": true,
-                                        "info": true
+                                        "info": true,
+                                        "progress": true
                                     },
                                     "shortcuts": {
                                         "buttons": [
@@ -121,10 +138,10 @@
                                                 "icon": "mdi:play",
                                                 "name": "Congo",
                                                 "type": "service",
-                                                "id": "media_extractor.play_media",
+                                                "id": "media_player.play_media",
                                                 "data": {
                                                     "entity_id": "media_player.basurero",
-                                                    "media_content_id": "http://cdn2.instream.audio:9243/stream",
+                                                    "media_content_id": "https://ipanel.instream.audio:7009/stream",
                                                     "media_content_type": "music",
                                                     "extra": {
                                                         "title": "Congo"
@@ -151,12 +168,6 @@
                             ]
                         },
                         {
-                            "type": "custom:mini-graph-card",
-                            "entities": [
-                                "sensor.fast_com_download"
-                            ]
-                        },
-                        {
                             "type": "entities",
                             "entities": [
                                 {
@@ -173,6 +184,7 @@
                                 {
                                     "type": "custom:mini-media-player",
                                     "entity": "media_player.butters",
+                                    "icon": "mdi:apple",
                                     "name": "Apple TV",
                                     "hide": {
                                         "volume": true
@@ -180,9 +192,21 @@
                                 },
                                 {
                                     "type": "custom:mini-media-player",
-                                    "entity": "media_player.onkyo",
-                                    "name": "Onkyo Receiver",
-                                    "info": "scroll"
+                                    "entity": "media_player.onkyto",
+                                    "max_volume": 60,
+                                    "icon": "mdi:speaker",
+                                    "name": "Onkyo",
+                                    "info": "scroll",
+                                    "shortcuts": {
+                                        "buttons": [
+                                            {
+                                                "icon": "mdi:play",
+                                                "name": "Turn Off Apple TV",
+                                                "type": "service",
+                                                "service": "script.apple_tv_off"
+                                            }
+                                        ]
+                                    }
                                 }
                             ]
                         },
@@ -220,6 +244,87 @@
                                     "font_size": 60
                                 }
                             ]
+                        },
+                        {
+                            "type": "custom:mini-graph-card",
+                            "name": "Temperaturas",
+                            "entities": [
+                                {
+                                    "entity": "sensor.aqara_living_temperature",
+                                    "name": "Living"
+                                },
+                                {
+                                    "entity": "sensor.aqara_balcon_temperature",
+                                    "name": "Balcon"
+                                },
+                                {
+                                    "entity": "sensor.aqara_bedroom_temperature",
+                                    "name": "Habitaci\u00f3n"
+                                }
+                            ],
+                            "hours_to_show": 48,
+                            "show": {
+                                "labels": true
+                            },
+                            "color_thresholds": [
+                                {
+                                    "value": 0,
+                                    "color": "#CCE5FF"
+                                },
+                                {
+                                    "value": 10,
+                                    "color": "#66B2FF"
+                                },
+                                {
+                                    "value": 18,
+                                    "color": "#0080FF"
+                                },
+                                {
+                                    "value": 20,
+                                    "color": "#87c087"
+                                },
+                                {
+                                    "value": 21,
+                                    "color": "#389638"
+                                },
+                                {
+                                    "value": 24,
+                                    "color": "#FF9932"
+                                },
+                                {
+                                    "value": 25,
+                                    "color": "#FF8000"
+                                },
+                                {
+                                    "value": 26,
+                                    "color": "#ff0000"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "custom:atomic-calendar-revive",
+                            "entities": [
+                                "calendar.emiliano_viscarra",
+                                "calendar.birthdays",
+                                "calendar.turnos_vicky"
+                            ],
+                            "name": "Calendario",
+                            "enableModeChange": true,
+                            "firstDayOfWeek": 1,
+                            "maxDaysToShow": 7,
+                            "showDate": true,
+                            "sortByStartTime": true,
+                            "showDeclined": true,
+                            "showRelativeTime": true,
+                            "showEventIcon": false,
+                            "calShowDescription": false,
+                            "showLastCalendarWeek": false,
+                            "hoursFormat": "H:mm",
+                            "dateFormat": "LL",
+                            "showCurrentEventLine": false,
+                            "showMonth": true,
+                            "showWeekDay": true,
+                            "showNoEventsForToday": true
                         },
                         {
                             "type": "custom:ha-card-weather-conditions",
@@ -303,86 +408,6 @@
                                     "high": 3
                                 }
                             }
-                        },
-                        {
-                            "type": "custom:mini-graph-card",
-                            "entities": [
-                                {
-                                    "entity": "sensor.aqara_balcon_temperature",
-                                    "name": "Balcon"
-                                },
-                                {
-                                    "entity": "sensor.aqara_living_temperature",
-                                    "name": "Living"
-                                },
-                                {
-                                    "entity": "sensor.aqara_bedroom_temperature",
-                                    "name": "Habitaci\u00f3n"
-                                }
-                            ],
-                            "hours_to_show": 48,
-                            "show": {
-                                "labels": true
-                            },
-                            "color_thresholds": [
-                                {
-                                    "value": 0,
-                                    "color": "#CCE5FF"
-                                },
-                                {
-                                    "value": 10,
-                                    "color": "#66B2FF"
-                                },
-                                {
-                                    "value": 18,
-                                    "color": "#0080FF"
-                                },
-                                {
-                                    "value": 20,
-                                    "color": "#87c087"
-                                },
-                                {
-                                    "value": 21,
-                                    "color": "#389638"
-                                },
-                                {
-                                    "value": 24,
-                                    "color": "#FF9932"
-                                },
-                                {
-                                    "value": 25,
-                                    "color": "#FF8000"
-                                },
-                                {
-                                    "value": 26,
-                                    "color": "#ff0000"
-                                }
-                            ]
-                        },
-                        {
-                            "type": "custom:atomic-calendar-revive",
-                            "entities": [
-                                "calendar.emiliano_viscarra",
-                                "calendar.birthdays",
-                                "calendar.turnos_vicky"
-                            ],
-                            "name": "Calendario",
-                            "enableModeChange": true,
-                            "firstDayOfWeek": 1,
-                            "maxDaysToShow": 7,
-                            "showDate": false,
-                            "sortByStartTime": true,
-                            "showDeclined": true,
-                            "showRelativeTime": true,
-                            "showEventIcon": false,
-                            "calShowDescription": false,
-                            "showLastCalendarWeek": false,
-                            "hoursFormat": "H:mm",
-                            "dateFormat": "LL",
-                            "showCurrentEventLine": false,
-                            "showMonth": true,
-                            "showWeekDay": true,
-                            "showNoEventsForToday": true
                         }
                     ]
                 },

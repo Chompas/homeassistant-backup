@@ -45,13 +45,17 @@
     platform: event
   condition: []
   action:
-  - device_id: 7069061b257e420a946db3cebd51895c
-    domain: switch
-    entity_id: switch.40505046c44f33b6dba4_1
-    type: turn_off
   - type: turn_off
-    device_id: b7ebc09b42434538b6cb1299f7e0448f
-    entity_id: switch.40505046c44f33b6dba4_2
+    device_id: 98964ebc38762704f86f9c370a79dd46
+    entity_id: switch.smart_outdoor_plug_1
+    domain: switch
+  - type: turn_off
+    device_id: 98964ebc38762704f86f9c370a79dd46
+    entity_id: switch.smart_outdoor_plug_2
+    domain: switch
+  - type: turn_off
+    device_id: 6804c133b8731f4b9d8f216c5d0506be
+    entity_id: switch.smart_socket_socket_1
     domain: switch
   - type: turn_off
     device_id: 54c503c4845049a4958139943bb6e77d
@@ -136,25 +140,8 @@
       title: Ohno
     service: notify.telegram_bot
   mode: single
-- id: '1608048778432'
-  alias: Apagar luces balcon a la madrugada
-  description: ''
-  trigger:
-  - platform: time
-    at: '3:00'
-  condition: []
-  action:
-  - domain: switch
-    entity_id: switch.40505046c44f33b6dba4_1
-    device_id: 7069061b257e420a946db3cebd51895c
-    type: turn_off
-  - domain: switch
-    entity_id: switch.40505046c44f33b6dba4_2
-    device_id: b7ebc09b42434538b6cb1299f7e0448f
-    type: turn_off
-  mode: single
 - id: '1608634886669'
-  alias: Christmas lights on sunset
+  alias: Christmas lights on sunset (si hace calor)
   description: ''
   trigger:
   - platform: sun
@@ -169,8 +156,8 @@
     below: 50
   action:
   - type: turn_on
-    device_id: b7ebc09b42434538b6cb1299f7e0448f
-    entity_id: switch.40505046c44f33b6dba4_2
+    device_id: 98964ebc38762704f86f9c370a79dd46
+    entity_id: switch.smart_outdoor_plug_2
     domain: switch
   mode: single
 - id: '1616667109694'
@@ -182,4 +169,30 @@
   condition: []
   action:
   - service: homeassistant.restart
+  mode: single
+- id: '1637072341704'
+  alias: Christmas lights on sunset (siempre)
+  description: ''
+  trigger:
+  - platform: sun
+    event: sunset
+  condition: []
+  action:
+  - type: turn_on
+    device_id: 98964ebc38762704f86f9c370a79dd46
+    entity_id: switch.smart_outdoor_plug_2
+    domain: switch
+  mode: single
+- id: '1638958971083'
+  alias: Arbol de navidad
+  description: ''
+  trigger:
+  - platform: sun
+    event: sunset
+  condition: []
+  action:
+  - type: turn_on
+    device_id: 6804c133b8731f4b9d8f216c5d0506be
+    entity_id: switch.smart_socket_socket_1
+    domain: switch
   mode: single
