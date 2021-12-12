@@ -1,37 +1,9 @@
 
-- cal_id: chompas@gmail.com
+- cal_id: ht3jlfaac5lfd6263ulfh4tql8@group.calendar.google.com
   entities:
-  - device_id: emiliano_viscarra
+  - device_id: phases_of_the_moon
     ignore_availability: true
-    name: Emiliano Viscarra
-    track: true
-
-- cal_id: 1kafmdqt7u1dk68u7jbpvn6kj4@group.calendar.google.com
-  entities:
-  - device_id: birthdays
-    ignore_availability: true
-    name: Birthdays
-    track: true
-
-- cal_id: 8nkpm7uqj8ppdpcfmdlbdcfnf4@group.calendar.google.com
-  entities:
-  - device_id: foursquare
-    ignore_availability: true
-    name: Foursquare
-    track: true
-
-- cal_id: psnmblmbogte9ohfhij0kjiebc@group.calendar.google.com
-  entities:
-  - device_id: feriados_argentina
-    ignore_availability: true
-    name: Feriados Argentina
-    track: true
-
-- cal_id: vdmtdcektajkqjk51vvda4ni4k@group.calendar.google.com
-  entities:
-  - device_id: world_cup_2014
-    ignore_availability: true
-    name: World Cup 2014
+    name: Phases of the Moon
     track: true
 
 - cal_id: en.german#holiday@group.v.calendar.google.com
@@ -41,6 +13,20 @@
     name: Holidays in Germany
     track: true
 
+- cal_id: vdmtdcektajkqjk51vvda4ni4k@group.calendar.google.com
+  entities:
+  - device_id: world_cup_2014
+    ignore_availability: true
+    name: World Cup 2014
+    track: true
+
+- cal_id: chompas@gmail.com
+  entities:
+  - device_id: emiliano_viscarra
+    ignore_availability: true
+    name: Emiliano Viscarra
+    track: true
+
 - cal_id: en.usa#holiday@group.v.calendar.google.com
   entities:
   - device_id: holidays_in_united_states
@@ -48,11 +34,32 @@
     name: Holidays in United States
     track: true
 
-- cal_id: ht3jlfaac5lfd6263ulfh4tql8@group.calendar.google.com
+- cal_id: 8enj3ch5tfjm0afv4fauhsjra0@group.calendar.google.com
   entities:
-  - device_id: phases_of_the_moon
+  - device_id: suddeutschland
     ignore_availability: true
-    name: Phases of the Moon
+    name: "S\xFCddeutschland"
+    track: true
+
+- cal_id: psnmblmbogte9ohfhij0kjiebc@group.calendar.google.com
+  entities:
+  - device_id: feriados_argentina
+    ignore_availability: true
+    name: Feriados Argentina
+    track: true
+
+- cal_id: 8nkpm7uqj8ppdpcfmdlbdcfnf4@group.calendar.google.com
+  entities:
+  - device_id: foursquare
+    ignore_availability: true
+    name: Foursquare
+    track: true
+
+- cal_id: 1kafmdqt7u1dk68u7jbpvn6kj4@group.calendar.google.com
+  entities:
+  - device_id: birthdays
+    ignore_availability: true
+    name: Birthdays
     track: true
 
 - cal_id: ecq46006e6li56iro4h2cgckpo@group.calendar.google.com
@@ -60,11 +67,4 @@
   - device_id: turnos_vicky
     ignore_availability: true
     name: Turnos Vicky
-    track: true
-
-- cal_id: 8enj3ch5tfjm0afv4fauhsjra0@group.calendar.google.com
-  entities:
-  - device_id: suddeutschland
-    ignore_availability: true
-    name: "S\xFCddeutschland"
     track: true

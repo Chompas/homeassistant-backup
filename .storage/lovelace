@@ -152,10 +152,10 @@
                                                 "icon": "mdi:play",
                                                 "name": "Congo Ofi",
                                                 "type": "service",
-                                                "id": "media_extractor.play_media",
+                                                "id": "media_player.play_media",
                                                 "data": {
                                                     "entity_id": "media_player.oficina",
-                                                    "media_content_id": "http://cdn2.instream.audio:9243/stream",
+                                                    "media_content_id": "https://ipanel.instream.audio:7009/stream",
                                                     "media_content_type": "music",
                                                     "extra": {
                                                         "title": "Congo"

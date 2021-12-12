@@ -191,6 +191,8 @@ sensor:
             - "00:00"
             - "06:30"
 google:
-  client_id: !secret google_client_id
-  client_secret: !secret google_client_secret
+  client_id: 555731529003-9p80ho5139m26gm83n4bu219m1c5ug02.apps.googleusercontent.com
+  client_secret: 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
+  #client_id: !secret google_client_id
+  #client_secret: !secret google_client_secret
 
