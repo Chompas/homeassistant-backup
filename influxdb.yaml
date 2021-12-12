@@ -1,4 +1,4 @@
-host: 10.0.0.18
+host: 192.168.1.205
 port: 8086
 database: homeassistant
 username: homeassistant
@@ -16,14 +16,18 @@ include:
     - sensor.aqara_living_humidity
     - sensor.aqara_living_pressure
     - sensor.aqara_living_temperature
-    - light.hue_color_lamp_1
-    - light.hue_color_lamp_2
-    - light.hue_color_spot_1
-    - light.hue_color_spot_2
-    - light.hue_color_spot_3
-    - switch.40505046c44f33b6dba4_1
-    - switch.40505046c44f33b6dba4_2
-    - sensor.speedtest_download
-    - sensor.speedtest_upload
-    - sensor.speedtest_ping
-    - sensor.fast_com_download
+    - light.comedor_color
+    - light.comedor_filament
+    - light.habitacion_1
+    - light.habitacion_2
+    - light.pasillo_1
+    - light.pasillo_2
+    - light.spot_1
+    - light.spot_2
+    - light.spot_3
+    - light.kallax
+    - light.ofi_1
+    - light.ofi_2
+    - switch.smart_socket_socket_1
+    - switch.smart_outdoor_plug_1
+    - switch.smart_outdoor_plug_2
